@@ -594,6 +594,11 @@ main(int argc, char** argv)
 	signal(SIGINT, exit_cli);
 	signal(SIGTERM, exit_cli);
 
+        //!!! send an unmute command
+        printf("unmuting digitizer...\n");
+        char sendCmd[] = {0xF0, 0x7D, 0x00, 0x32, 0x00, 0xF7};
+        write(serial, sendCmd, 6);
+
 	while (run)
 	{   
 		sleep(100);
